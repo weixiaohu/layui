@@ -148,7 +148,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
     ,'<div class="layui-table-box">'
       ,'{{# if(d.data.loading){ }}'
       ,'<div class="layui-table-init" style="background-color: #fff;">'
-        ,'<i class="layui-icon layui-icon-loading layui-icon"></i>'
+        ,'<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>'
       ,'</div>'
       ,'{{# } }}'
       
@@ -884,7 +884,9 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
             that.loading();
             that.pullData(obj.curr);
           }
-        }
+          this.onJump(obj, first);
+        },
+        onJump:function(obj, first){}
       }, options.page);
       options.page.count = count; //更新总条数
       laypage.render(options.page);
@@ -1048,7 +1050,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
         that.layBox.find(ELEM_INIT).remove()
       } else {
         that.layInit = $(['<div class="layui-table-init">'
-          ,'<i class="layui-icon layui-icon-loading layui-icon"></i>'
+          ,'<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>'
         ,'</div>'].join(''));
         that.layBox.append(that.layInit);
       }
